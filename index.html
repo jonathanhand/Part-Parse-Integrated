@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parts Parser</title>
+    <script src="main.js" defer></script>
+</head>
+
+<body style="text-align:center">
+    <h1>Get McM Parts from Emails</h1>
+<p>If something is broken or you have feedback on how this can be better, slack me @jon hand</p>
+    <div>
+        <h2>Paste Email Here</h2>
+        <form id='inboundForm'>
+            <textarea rows="20" cols="100" placeholder="paste email here" id="emailField">
+
+            </textarea>
+            <br>
+            <input type='checkbox' id='tableCheck' value='tableCheck' >Table View</input><input type='checkbox' id='ipixCheck' value='Duplicate' style='display:none'></input>
+            <input type='checkbox' id='dupCheck' value='Duplicate' checked>Show Duplicates</input>
+            <input type='checkbox' id='custCheck' value='Custom'>Custom Line Output</input>
+	          <input type='text' id='custField' placeholder='Custom Output' style='display:none'>
+            <input type='checkbox' id='qtyCheck' value='Qty'>Quantity</input>
+            <input type='checkbox' id='uomCheck' value='uom'>UOM Converter</input>
+            <input type='button' id='getPartsBtn' value='Get Parts'>
+        
+		
+        </form>
+ </div>
+<div id='uomDiv' style='display:none'>
+<h2>Paste UOMs from MCM Table View</h2>
+        <form id='uomForm'>
+            <textarea rows="5" cols="100" placeholder="paste uom column here" id="uomField">
+            </textarea>
+            <br>
+        </form>
+        <br>
+  </div>
+<div id='qtyDiv' style='display:none'>
+<h2>Paste Customer Quantities (if empty, will add 1 for each)</h2>
+        <form id='qtyForm'>
+            <textarea rows="5" cols="100" placeholder="paste qty here" id="qtyField">
+            </textarea>
+            <br>
+        </form>
+        <br>
+  </div>
+        <h2>Part Numbers Output</h2>
+        <form id="outboundForm">
+            <textarea rows="20" cols="100" placeholder="Part numbers will be here" id="partCSVField">
+
+            </textarea>
+        </form>
+
+   
+    <div>
+        <br>
+        <h2>Line Listing</h2>
+        <textarea rows="10" cols="50" placeholder="Line list will be here" id="lineListField">
+
+                </textarea>
+    </div>
+
+</body>
+
+</html>
