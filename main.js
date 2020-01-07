@@ -16,15 +16,19 @@ const getPartsBtn = document.getElementById('getPartsBtn').addEventListener('cli
     const tableCheck = document.getElementById('tableCheck').checked;
     console.log(dupCheck);
     console.log(emailField);
-    uomArray = [];
+    console.log(uomField);
     if (qtyField.value != null) {
           qtyArray = parseQty(qtyField.value);    
     }
-  if (uomField.value != null) {
-    uomArray = uomQty(uomField.value);
-  }
   else {
     qtyArray = -1
+  }
+    if (uomField.value != null) {
+    uomArray = parseUom(uomField.value);
+      console.log(uomArray)
+  }
+  else {
+    uomArray = -1
   }
   
     parseParts(emailField.value, dupCheck, ipixCheck, custCheck, custField, qtyArray, tableCheck);
@@ -40,10 +44,20 @@ function parseQty(qtyText) {
   }
 }
 function parseUom(uomText) {
+  uomMatch = new Array()
     const digitReg = /(\d{1,4})/gim;
-    const qtyMatch = qtyText.match(digitReg);
-  if (qtyMatch != null) {
-      return qtyMatch;
+  uomLines = uomText.split('\n')
+    for (let line in uomLines) {
+      if(uomLines[line] == "Each"){
+        uomMatch.push('1')
+      }
+      else {
+        uomMatch = uomLines[line].match(digitReg);
+      }
+    }
+    
+  if (uomMatch != null) {
+      return uomMatch;
 
   }
 }
