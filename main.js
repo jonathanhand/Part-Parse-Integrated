@@ -2,38 +2,63 @@ const custCheck = document.getElementById('custCheck');
 custCheck.addEventListener('change', showCust);
 qtyCheck.addEventListener('change', showQty);
 uomCheck.addEventListener('change', showUom);
-	const custField = document.getElementById('custField');
+const custField = document.getElementById('custField');
 //get html elements
 const getPartsBtn = document.getElementById('getPartsBtn').addEventListener('click', function () {
     const emailField = document.getElementById('emailField');
     const dupCheck = document.getElementById('dupCheck').checked;
     const ipixCheck = document.getElementById('ipixCheck').checked;
     const qtyField = document.getElementById('qtyField');
+    
     const uomField = document.getElementById('uomField');
-
     const qtyCheck = document.getElementById('qtyCheck').checked;
     const uomCheck = document.getElementById('uomCheck').checked;
     const tableCheck = document.getElementById('tableCheck').checked;
     console.log(dupCheck);
     console.log(emailField);
     console.log(uomField);
+  var uomArray = new Array(); 
+var qtyArray = new Array();
     if (qtyField.value != null) {
           qtyArray = parseQty(qtyField.value);    
     }
   else {
     qtyArray = -1
   }
-    if (uomField.value != null) {
+    if (uomField.value.trim() != '') {
+      console.log(uomField.value)
+      console.log('uom not null')
     uomArray = parseUom(uomField.value);
-      console.log(uomArray)
+      
   }
   else {
-    uomArray = -1
+    console.log('uom null')
+    uomArray.push(-1)
   }
-  
+  console.log(uomArray)
+  if (uomArray[0] != -1 && uomArray.length == qtyArray.length) {
+    var newQtyArray = convertPacks(uomArray,qtyArray)
+    parseParts(emailField.value, dupCheck, ipixCheck, custCheck, custField, newQtyArray, tableCheck);
+  }
+  else {
     parseParts(emailField.value, dupCheck, ipixCheck, custCheck, custField, qtyArray, tableCheck);
+  }
     
 });
+
+function convertPacks (uom, qty) {
+  console.log('converting packs')
+  var product = 1
+  var newQtyArray = new Array ()
+  for (let index in uom) {
+    product = qty[index] / uom[index]
+    product = Math.ceil(product)
+    newQtyArray.push(product)
+  }
+  
+  console.log(newQtyArray)
+  return newQtyArray
+}
 
 function parseQty(qtyText) {
     const digitReg = /(\d{1,4})/gim;
@@ -43,24 +68,33 @@ function parseQty(qtyText) {
 
   }
 }
+
 function parseUom(uomText) {
-  uomMatch = new Array()
+    uomText = uomText.trim()
     const digitReg = /(\d{1,4})/gim;
   uomLines = uomText.split('\n')
+  var uomMatch = new Array()
+
     for (let line in uomLines) {
-      if(uomLines[line] == "Each"){
-        uomMatch.push('1')
+      uomLines[line] = uomLines[line].trim()
+      console.log(uomLines[line]);
+      
+      if(uomLines[line] == "Each" || uomLines[line] == "Pair"){
+        uomMatch.push(1);
       }
       else {
-        uomMatch = uomLines[line].match(digitReg);
+        uomMatch.push(parseInt(uomLines[line].match(digitReg)));
       }
-    }
-    
-  if (uomMatch != null) {
+      }
+    if (uomMatch.length > 0 && isNaN(uomMatch[0]) != true) {
       return uomMatch;
+    }
+      else {
+        return -1;
+      }
+      
 
   }
-}
 //show custom field
 function showCust() {
 console.log('executed' + custCheck)
@@ -72,6 +106,7 @@ custField.style.display = 'none';
 }
 	
 	}
+
 function showUom() {
 	if (uomCheck.checked == true) {
 	uomDiv.style.display = 'inline-block';
@@ -81,6 +116,7 @@ uomDiv.style.display = 'none';
 }
 	
 	}
+
 function showQty() {
 console.log('executed qty' + qtyCheck)
 	if (qtyCheck.checked == true) {
@@ -126,7 +162,6 @@ console.log(custField.value)
     }
   
 }
-
 //create csv from passed in array
 function createCSV(partMatch, qtyArray,tableCheck) {
     var partsCSV = ' '
@@ -315,7 +350,6 @@ else {
     const partCSVField = document.getElementById('partCSVField');
     partCSVField.innerHTML = partsCSV;
 }
-
 
 function createLineList(part, ipixCheck, custCheck, custField) {
 	console.log(custField.value)
