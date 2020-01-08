@@ -2,6 +2,7 @@ const custCheck = document.getElementById('custCheck');
 custCheck.addEventListener('change', showCust);
 qtyCheck.addEventListener('change', showQty);
 uomCheck.addEventListener('change', showUom);
+
 const custField = document.getElementById('custField');
 //get html elements
 const getPartsBtn = document.getElementById('getPartsBtn').addEventListener('click', function () {
@@ -110,9 +111,13 @@ custField.style.display = 'none';
 function showUom() {
 	if (uomCheck.checked == true) {
 	uomDiv.style.display = 'inline-block';
+    uomConDiv.style.display = 'inline-block';
+    qtyDiv.style.display = 'inline-block';
 	}
 else {
-uomDiv.style.display = 'none';
+  uomDiv.style.display = 'none';
+  qtyDiv.style.display = 'none';
+  uomConDiv.style.display = 'none';
 }
 	
 	}
