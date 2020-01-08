@@ -79,7 +79,7 @@ function parseUom(uomText) {
       uomLines[line] = uomLines[line].trim()
       console.log(uomLines[line]);
       
-      if(uomLines[line] == "Each" || uomLines[line] == "Pair"){
+      if(uomLines[line] == "Each" || uomLines[line] == "Pairs"){
         uomMatch.push(1);
       }
       else {
