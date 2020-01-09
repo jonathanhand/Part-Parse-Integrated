@@ -259,7 +259,7 @@ function createCSV(partMatch, qtyArray,tableCheck) {
     
   }
 else {
-    if (qtyCheck.checked == true) {
+    if (qtyCheck.checked == true || uomCheck.checked == true) {
       if(qtyArray == null) {
         	  console.log("qty checked, but empty")
 	  //(partMatch.length == qtyArray.length && qtyChecked.checked == true){
