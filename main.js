@@ -12,6 +12,8 @@ const getPartsBtn = document.getElementById('getPartsBtn').addEventListener('cli
     const qtyField = document.getElementById('qtyField');
     
     const uomField = document.getElementById('uomField');
+    const uomConField = document.getElementById('uomConField');
+
     const qtyCheck = document.getElementById('qtyCheck').checked;
     const uomCheck = document.getElementById('uomCheck').checked;
     const tableCheck = document.getElementById('tableCheck').checked;
@@ -39,6 +41,7 @@ var qtyArray = new Array();
   console.log(uomArray)
   if (uomArray[0] != -1 && uomArray.length == qtyArray.length) {
     var newQtyArray = convertPacks(uomArray,qtyArray)
+    qtyOut(newQtyArray);
     parseParts(emailField.value, dupCheck, ipixCheck, custCheck, custField, newQtyArray, tableCheck);
   }
   else {
@@ -46,6 +49,11 @@ var qtyArray = new Array();
   }
     
 });
+
+function qtyOut(newQty) {
+  console.log('outputting converted qty')
+  uomConField.innerHTML = newQty
+}
 
 function convertPacks (uom, qty) {
   console.log('converting packs')
