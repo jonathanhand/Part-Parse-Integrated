@@ -52,7 +52,11 @@ var qtyArray = new Array();
 
 function qtyOut(newQty) {
   console.log('outputting converted qty')
-  uomConField.innerHTML = newQty
+  var qtyOut = ''
+  for (let i in newQty) {
+    qtyOut += newQty[i] + '\n'
+  }
+  uomConField.innerHTML = qtyOut
 }
 
 function convertPacks (uom, qty) {
