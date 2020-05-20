@@ -503,7 +503,7 @@ function duplicateCheck(set, array) {
 
 }
 
-/*
+
 const makeTableBtn = document.getElementById('makeTableBtn').addEventListener('click', function () {
     const revField = document.getElementById('revField');
     //const tableField = document.getElementById('tableField');
@@ -591,4 +591,4 @@ function clearTable() {
     revField.value = "";
 
 }
-*/
+
