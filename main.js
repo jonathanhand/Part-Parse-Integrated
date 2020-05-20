@@ -26,7 +26,7 @@ function clearAll() {
 const custCheck = document.getElementById('custCheck');
 const placeCheck = document.getElementById('placeCheck');
 const qtyCheck = document.getElementById('qtyCheck')
-const uomCheck = document.getElementById('uomCheck').checked;
+const uomCheck = document.getElementById('uomCheck');
 
 custCheck.addEventListener('change', showCust);
 qtyCheck.addEventListener('change', showQty);
