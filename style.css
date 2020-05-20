@@ -1,0 +1,134 @@
+* {
+    font-family:"FuturaStd-Book","Segoe UI","Segoe","Tahoma,Helvetica,Arial,sans-serif";
+    color: #4d4d4d;
+}
+h1 {
+    font-size:42px;
+    display:block; 
+    color: rgb(52, 103, 52);
+    text-transform: uppercase;
+
+}
+button {
+    cursor: pointer;
+    color:  #777777;
+    background-color:white;
+    font-size:24px;
+    text-transform: uppercase;
+    border: 1px #bbbbbb solid
+}
+label {
+    font-size:26px;
+    display:block; 
+    color: #4d4d4d;
+    filter:contrast(8.45);
+}
+a {
+   text-decoration: none; 
+}
+
+.alert-text {
+    display: none;
+    color:Red;
+}
+.center-all {
+    text-align: center;
+}
+
+.container {
+    display:flex;
+    justify-content: center;
+
+}
+
+table, th, td {
+    border: 1px solid black;
+     border-collapse: collapse;
+     font-family: "arial";
+     color:black;
+     text-align:center;
+  }
+  table {
+    padding:10px;
+  }
+th {
+  font-size: 10pt;
+  color: black;
+  font-weight:bold;
+}
+td:nth-child(8),td:nth-child(1),th:nth-child(1),td:nth-child(9),th:nth-child(8), td:nth-child(7),th:nth-child(7) {
+  display: none;
+} 
+.checkboxes {
+    padding-inline-end: 10px;
+    padding-inline-start: 10px;
+    border: 1px solid #c4c4c4;
+    border-right: none;
+}
+
+.smallbutton {
+    cursor: pointer;
+    color:  #777777;
+    background-color:white;
+    font-size:16px;
+    text-transform: uppercase;
+    border: 1px #bbbbbb solid
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 500px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 0%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  textarea {
+
+    background: linear-gradient(rgb(255, 255, 255) 50%, rgb(243, 243, 243) 50%) top left / 100% 42px;
+    background-repeat: repeat-y;
+
+    background-attachment: local;
+                border: 1px solid #CCC;
+    box-sizing: border-box;
+    padding: 0 0 0 30px;
+    resize: vertical;
+    line-height: 21px;
+    font-size: 14px;
+  }
+  
+  .textarea-wrapper {
+    display: inline-block;
+    background-image: linear-gradient(#F1F1F1 50%, #F9F9F9 50%);
+    background-size: 125% 80px;
+    background-position: left 10px;
+  }
