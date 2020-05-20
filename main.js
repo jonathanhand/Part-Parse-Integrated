@@ -25,12 +25,12 @@ function clearAll() {
 
 const custCheck = document.getElementById('custCheck');
 const placeCheck = document.getElementById('placeCheck');
-
+const qtyCheck = document.getElementById('qtyCheck')
+const uomCheck = document.getElementById('uomCheck').checked;
 
 custCheck.addEventListener('change', showCust);
 qtyCheck.addEventListener('change', showQty);
 uomCheck.addEventListener('change', showUom);
-placeCheck.addEventListener('change', showPlace);
 
 const custField = document.getElementById('custField');
 const alert = document.getElementById('alert-text');
